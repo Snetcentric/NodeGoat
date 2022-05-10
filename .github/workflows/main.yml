@@ -1,24 +1,14 @@
 - name: Checkmarx AST Github Action
-  # You may pin to the exact commit or the version.
-  # uses: Checkmarx/ast-github-action@33a450f2a0ae798ec9546bef50903edacf41c1e7
   uses: Checkmarx/ast-github-action@2.0.4
   with:
-    # Provide the AST portal URL
     base_uri: https://eu.ast.checkmarx.net/
-    # Provide the Tenant for AST portal URL
     cx_tenant: nfr_acpl
-    # Client ID for AST portal authentication
     cx_client_id: LTI_AzureDevops_Oauth
-    # Secret key for AST portal authentication
     cx_client_secret: 4ffcfe5d-b7ed-40f2-ab95-dc097b64692d
-    # Select a Checkmarx Project Name
     project_name: # optional, default is ${{ github.repository }}
-    # Branch name
     branch: # optional, default is ${{ github.ref }}
-    # GitHub API Token
     github_token: # optional, default is ${{ github.token }}
-    # Additional parameters for AST scan
-    additional_params: --tags test1,test2 --scan-types sast,kics --file-filter !readme --report-format sarif --output-name results
+    additional_params: --tags test1 --scan-types sast --file-filter !readme --report-format sarif --output-name results
 - name: Upload SARIF file
   uses: github/codeql-action/upload-sarif@v1
   with:
